@@ -1,0 +1,609 @@
+/* Animações personalizadas */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseScale {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseMoney {
+    0%, 100% {
+        transform: scale(1);
+        color: #FF2D54;
+    }
+    50% {
+        transform: scale(1.05);
+        color: #FF719A;
+    }
+}
+
+@keyframes bounceInNotification {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(5px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulseNotification {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.1);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(239, 68, 68, 0.2);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Estilos personalizados */
+.option-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.option-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 45, 84, 0.15);
+}
+
+.option-card.selected {
+    border-color: #FF2D54;
+    background-color: #FEF2F2;
+    transform: scale(1.02);
+}
+
+.option-card.selected::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #FF2D54, #FF719A);
+    border-radius: 12px;
+    z-index: -1;
+}
+
+/* Efeito de ripple nos botões */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Animação de entrada para perguntas */
+.question-enter {
+    animation: slideUp 0.6s ease-out;
+}
+
+/* Animações de entrada */
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-down {
+    opacity: 0;
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+.animate-pulse-money {
+    animation: pulseMoney 2s ease-in-out infinite;
+}
+
+.animate-bounce-in {
+    animation: bounceInNotification 0.6s ease-out forwards, pulseNotification 2s ease-in-out infinite 0.8s;
+}
+
+/* Emojis flutuantes */
+.floating-emoji {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0;
+    pointer-events: none;
+    animation: emojiEntrance 1s ease-out forwards, floatEmoji 6s ease-in-out infinite 1.5s;
+}
+
+.emoji-1 {
+    top: 10%;
+    left: 8%;
+    animation-delay: 0.8s, 2.3s;
+}
+
+.emoji-2 {
+    top: 80%;
+    left: 15%;
+    animation-delay: 1.5s, 3s;
+}
+
+.emoji-3 {
+    top: 35%;
+    right: 8%;
+    animation-delay: 2.2s, 3.7s;
+}
+
+@keyframes emojiEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(-90deg);
+    }
+    100% {
+        opacity: 0.7;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes floatEmoji {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-20px) rotate(5deg);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-40px) rotate(-5deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-20px) rotate(3deg);
+        opacity: 0.9;
+    }
+}
+
+/* Estilos para ícones animados */
+.icon-bounce {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Modal animado */
+.modal-show {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-show .modal-content {
+    animation: bounceIn 0.6s ease-out;
+}
+
+/* Gradientes personalizados */
+.gradient-tiktok {
+    background: linear-gradient(135deg, #FF2D54 0%, #FF719A 100%);
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
+}
+
+/* Sombras customizadas */
+.shadow-tiktok {
+    box-shadow: 0 10px 25px rgba(255, 45, 84, 0.2);
+}
+
+/* Responsividade extra para dispositivos muito pequenos */
+@media (max-width: 320px) {
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+    
+    .p-6 {
+        padding: 1rem;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading spinner customizado */
+.loading-dots {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.loading-dots div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #FF2D54;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.loading-dots div:nth-child(1) {
+    left: 8px;
+    animation: loading-dots1 0.6s infinite;
+}
+
+.loading-dots div:nth-child(2) {
+    left: 8px;
+    animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(3) {
+    left: 32px;
+    animation: loading-dots2 0.6s infinite;
+}
+
+.loading-dots div:nth-child(4) {
+    left: 56px;
+    animation: loading-dots3 0.6s infinite;
+}
+
+@keyframes loading-dots1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes loading-dots3 {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes loading-dots2 {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(24px, 0);
+    }
+}
+
+/* Animação para texto digitando */
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid #FF2D54;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #FF2D54;
+    }
+}
+
+/* Validação de erro para inputs (mantido para uso futuro) */
+.input-error {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.3) !important;
+}
+
+/* Estilos para telas de saque */
+.amount-btn {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.amount-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.amount-btn.selected {
+    border-color: #14B8A6 !important;
+    background-color: #F0FDFA !important;
+    color: #0F766E;
+}
+
+/* Video player aspect ratio */
+.aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+/* Header balances */
+#available-balance {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Animações para transições entre telas */
+.screen-transition {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hover effects para botões principais */
+.bg-tiktok-red:hover {
+    background-color: #E11D48;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 45, 84, 0.3);
+}
+
+/* Estilos para o player de vídeo */
+.video-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* Modal show animation melhorada */
+.modal-show {
+    animation: modal-show-enhanced 0.4s ease-out;
+}
+
+.modal-content-enhanced {
+    animation: modal-content-enhanced 0.5s cubic-bezier(0.34, 1.56, 0.64, 1.0);
+}
+
+@keyframes modal-show-enhanced {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+@keyframes modal-content-enhanced {
+    0% {
+        transform: scale(0.8) translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilos para o vídeo de desbloqueio */
+#unlock-video {
+    border: 2px solid rgba(255, 45, 84, 0.2);
+    transition: all 0.3s ease;
+    max-height: 70vh; /* Limitar altura em telas muito grandes */
+}
+
+#unlock-video:hover {
+    border-color: rgba(255, 45, 84, 0.4);
+    transform: scale(1.01); /* Menos escala para vídeo vertical */
+}
+
+/* Container do vídeo vertical */
+.video-container-vertical {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.video-container-vertical:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Botão com vídeo assistido */
+.video-watched {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4) !important;
+    animation: video-watched-glow 2s ease-in-out infinite;
+}
+
+@keyframes video-watched-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.7);
+    }
+}
+
+/* Loading do vídeo */
+#unlock-video:not([poster]) {
+    background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+    background-size: 400% 400%;
+    animation: video-loading 2s ease-in-out infinite;
+}
+
+@keyframes video-loading {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Responsividade para vídeo vertical */
+@media (max-width: 320px) {
+    .video-container-vertical {
+        width: 240px !important;
+    }
+    
+    #unlock-video {
+        max-height: 60vh;
+    }
+}
+
+/* Destaque extra para notificações com scroll */
+#pix-value-notification.animate-bounce-in,
+#pix-key-notification.animate-bounce-in {
+    animation: bounceInNotification 0.6s ease-out forwards, 
+               pulseNotification 2s ease-in-out infinite 0.8s,
+               highlight-notification 0.8s ease-out 0.2s;
+}
+
+@keyframes highlight-notification {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.1);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.1);
+    }
+}
+
+/* Indicador visual de scroll */
+.notification-scroll-indicator {
+    position: relative;
+}
+
+.notification-scroll-indicator::before {
+    content: '👆';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    animation: bounce-arrow 1s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes bounce-arrow {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+} 
